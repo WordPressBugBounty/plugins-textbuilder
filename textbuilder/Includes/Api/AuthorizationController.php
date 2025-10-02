@@ -31,6 +31,11 @@ class AuthorizationController
     {
         $currentUser = wp_get_current_user();
         if (isset($_GET['token'], $_GET['page']) && $_GET['page'] === 'textbuilder') {
+            // Verify the nonce to prevent CSRF attacks
+            if (!wp_verify_nonce($_GET['nonce'], 'tb_authorize_token_' . $currentUser->ID)) {
+                wp_die('Failed to verify nonce. Please try again.');
+            }
+
             update_user_meta($currentUser->ID, 'tb_token', sanitize_key($_GET['token']));
             update_user_meta($currentUser->ID, 'tb_token_created', current_time('mysql'));
             wp_redirect(esc_url_raw(strtok($this->settingsUrl(), '&')));
@@ -147,11 +152,14 @@ class AuthorizationController
         $currentUser = wp_get_current_user();
         $userId = $currentUser->ID;
 
+        // Create a nonce for this specific user and action
+        $nonce = wp_create_nonce('tb_authorize_token_' . $userId);
+
         $url = add_query_arg(
             [
                 'app' => 'textbuilder',
                 'domain' => urlencode_deep(get_site_url()),
-                'redirect_url' => urlencode_deep($this->settingsUrl()),
+                'redirect_url' => urlencode_deep($this->settingsUrl() . '&nonce=' . $nonce),
                 'user' => urlencode_deep($currentUser->data->user_login),
                 'user_id' => urlencode_deep($userId),
                 'textbuilder_version' => urlencode_deep(TEXTBUILDER_VERSION),
