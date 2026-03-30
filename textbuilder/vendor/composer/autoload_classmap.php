@@ -7,4 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'TextBuilder\\Admin\\SettingsPanel' => $baseDir . '/Includes/Admin/SettingsPanel.php',
+    'TextBuilder\\AjaxController' => $baseDir . '/Includes/AjaxController.php',
+    'TextBuilder\\Api\\AuthorizationController' => $baseDir . '/Includes/Api/AuthorizationController.php',
+    'TextBuilder\\Api\\CategoriesController' => $baseDir . '/Includes/Api/CategoriesController.php',
+    'TextBuilder\\Api\\MediaController' => $baseDir . '/Includes/Api/MediaController.php',
+    'TextBuilder\\Api\\PostsController' => $baseDir . '/Includes/Api/PostsController.php',
+    'TextBuilder\\Api\\RestAuthenticationController' => $baseDir . '/Includes/Api/RestAuthenticationController.php',
+    'TextBuilder\\Api\\TagsController' => $baseDir . '/Includes/Api/TagsController.php',
+    'TextBuilder\\FrontPage' => $baseDir . '/Includes/FrontPage.php',
+    'TextBuilder\\Helpers\\Request' => $baseDir . '/Includes/Helpers/Request.php',
+    'TextBuilder\\Helpers\\Str' => $baseDir . '/Includes/Helpers/Str.php',
+    'TextBuilder\\TextBuilder' => $baseDir . '/Includes/TextBuilder.php',
 );

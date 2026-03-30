@@ -3,7 +3,7 @@
  * Plugin Name: TextBuilder
  * Plugin URI: https://textbuilder.ai
  * Description: With the TextBuilder.ai WordPress Plugin, you can quickly create content and post it directly to your blog without any manual effort.
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: TextBuilder.ai
  * Author URI: https://textbuilder.ai/about/
  * License: GPLv3
@@ -14,7 +14,7 @@
  * Domain Path: /languages/
  */
 
-define('TEXTBUILDER_VERSION', '1.2.0');
+define('TEXTBUILDER_VERSION', '1.3.0');
 define('TEXTBUILDER_ROOT', __FILE__);
 define('TEXTBUILDER_ROOT_DIRNAME', basename(dirname(TEXTBUILDER_ROOT)));
 define('TEXTBUILDER_PLUGIN_URL', rtrim(plugin_dir_url(__FILE__), '/') . '/');

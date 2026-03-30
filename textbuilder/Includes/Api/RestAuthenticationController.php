@@ -171,8 +171,23 @@ class RestAuthenticationController
         $consumerKey = '';
         $consumerSecret = '';
 
+        // Some hosting environments may not set PHP_AUTH_USER and PHP_AUTH_PW.
+        // Try to extract credentials from the Authorization header if not set.
+        if (empty($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+            if (stripos($authHeader, 'basic ') === 0) {
+                $encoded = substr($authHeader, 6);
+                $decoded = base64_decode($encoded);
+                if ($decoded !== false && strpos($decoded, ':') !== false) {
+                    [$user, $pass] = explode(':', $decoded, 2);
+                    $consumerKey = $user;
+                    $consumerSecret = $pass;
+                }
+            }
+        }
+
         // If the above is not present, we will do full basic auth.
-        if (!empty($_SERVER['PHP_AUTH_USER']) && !empty($_SERVER['PHP_AUTH_PW'])) {
+        if ((!$consumerKey || !$consumerSecret) && !empty($_SERVER['PHP_AUTH_USER']) && !empty($_SERVER['PHP_AUTH_PW'])) {
             $consumerKey = $_SERVER['PHP_AUTH_USER']; // WPCS: CSRF ok, sanitization ok.
             $consumerSecret = $_SERVER['PHP_AUTH_PW']; // WPCS: CSRF ok, sanitization ok.
         }

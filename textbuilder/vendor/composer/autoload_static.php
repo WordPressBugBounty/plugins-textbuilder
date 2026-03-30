@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite8858dcc7399ddb290699fef253bbcfc
+class ComposerStaticInitd751713988987e9331980363e24189ce
 {
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'T' =>
         array (
             'TextBuilder\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'TextBuilder\\' => 
+        'TextBuilder\\' =>
         array (
             0 => __DIR__ . '/../..' . '/Includes',
         ),
@@ -22,14 +22,26 @@ class ComposerStaticInite8858dcc7399ddb290699fef253bbcfc
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'TextBuilder\\Admin\\SettingsPanel' => __DIR__ . '/../..' . '/Includes/Admin/SettingsPanel.php',
+        'TextBuilder\\AjaxController' => __DIR__ . '/../..' . '/Includes/AjaxController.php',
+        'TextBuilder\\Api\\AuthorizationController' => __DIR__ . '/../..' . '/Includes/Api/AuthorizationController.php',
+        'TextBuilder\\Api\\CategoriesController' => __DIR__ . '/../..' . '/Includes/Api/CategoriesController.php',
+        'TextBuilder\\Api\\MediaController' => __DIR__ . '/../..' . '/Includes/Api/MediaController.php',
+        'TextBuilder\\Api\\PostsController' => __DIR__ . '/../..' . '/Includes/Api/PostsController.php',
+        'TextBuilder\\Api\\RestAuthenticationController' => __DIR__ . '/../..' . '/Includes/Api/RestAuthenticationController.php',
+        'TextBuilder\\Api\\TagsController' => __DIR__ . '/../..' . '/Includes/Api/TagsController.php',
+        'TextBuilder\\FrontPage' => __DIR__ . '/../..' . '/Includes/FrontPage.php',
+        'TextBuilder\\Helpers\\Request' => __DIR__ . '/../..' . '/Includes/Helpers/Request.php',
+        'TextBuilder\\Helpers\\Str' => __DIR__ . '/../..' . '/Includes/Helpers/Str.php',
+        'TextBuilder\\TextBuilder' => __DIR__ . '/../..' . '/Includes/TextBuilder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite8858dcc7399ddb290699fef253bbcfc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite8858dcc7399ddb290699fef253bbcfc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite8858dcc7399ddb290699fef253bbcfc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd751713988987e9331980363e24189ce::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd751713988987e9331980363e24189ce::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd751713988987e9331980363e24189ce::$classMap;
 
         }, null, ClassLoader::class);
     }
